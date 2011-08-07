@@ -42,3 +42,6 @@ HdSpeed1:
 HdSpeed2:
 	hdparm -t /dev/sda
 
+.PHONY: MemInfo
+MemInfo:
+	dmidecode -t 17
