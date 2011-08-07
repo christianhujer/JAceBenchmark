@@ -3,10 +3,10 @@ StartupPerformance: numloops:=100
 
 all: StartupPerformance
 
-PrepareStartupPerformance:
-	javac StartupPerformance.java
+%.class: %.java
+	javac $^
 
-StartupPerformance: PrepareStartupPerformance
+StartupPerformance: StartupPerformance.class
 	starttime=$$(date +%s%N); \
 	for ((i=0; i<$(numloops); i++)) ; \
 	do \
