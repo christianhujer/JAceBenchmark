@@ -1,0 +1,9 @@
+- Add system information retrieval using dmidecode
+- Add Java memory copy benchmark
+- Add Java compilation benchmark
+- Add Java I/O performance benchmark
+- Add memory benchmark (dd)
+- Add I/O benchmark (dd)
+- Add I/O benchmark (hdparm -t)
+- Add GNUmake benchmark
+- Add cc benchmark
