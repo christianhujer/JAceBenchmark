@@ -1,0 +1,8 @@
+JAceBenchmark is my personal benchmark suite.
+I use it to benchmark a few aspects of a PC's performance.
+The main focus is on aspects which are important to software developers.
+For example, they measure the translation performance of C compilers or JVMs.
+Some of the benchmarks are independent of the operating system.
+Some require a real Linux system.
+Some require a POSIX system, and on Windows thus require something like Cygwin.
+Some require a JVM.
