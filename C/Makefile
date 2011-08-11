@@ -22,4 +22,4 @@ compile: $(OBJECTS)
 
 .PHONY: genFiles
 genfiles:
-	for ((i=0; i<100; i++)); do echo "int main(void) { return 0; }" >$$(printf "source_%02d.c" $$i) ; done
+	for ((i=0; i<100; i++)); do echo -e "#include <stdio.h>\n#include <stdlib.h>\n\nint main(void) { return 0; }" >$$(printf "source_%02d.c" $$i) ; done
