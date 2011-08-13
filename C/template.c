@@ -10,7 +10,7 @@
 /** Aborts the program with an error message.
  * The printed error message is prefixed with #MSG_START.
  * @param format Format of the error message.
- * @param ... format arguments
+ * @param ... format arguments (at least one required, use NULL or "" if you don't need one).
  */
 #define abortWithMsg(format, ...) \
     do { \
@@ -54,12 +54,12 @@ struct entry {
  * @param num Number of which to return the Fibonacci number.
  * @return Fibonacci number of \p num.
  */
-uint_fast64_t fibo(uint_fast64_t num)
+uint_fast64_t fiboR(uint_fast64_t num)
 {
     switch (num) {
     case 0: return 0;
     case 1: return 1;
-    default: return fibo(num - 1) + fibo(num - 2);
+    default: return fiboR(num - 1) + fiboR(num - 2);
     }
 }
 
@@ -68,11 +68,11 @@ uint_fast64_t fibo(uint_fast64_t num)
  * @param num Number of which to return the factorial.
  * @return Factorial of \p num.
  */
-uint_fast64_t fac(uint_fast64_t num)
+uint_fast64_t facR(uint_fast64_t num)
 {
     switch (num) {
     case 0: return 1;
-    default: return num * fac(num - 1);
+    default: return num * facR(num - 1);
     }
 }
 
@@ -81,19 +81,19 @@ uint_fast64_t fac(uint_fast64_t num)
  * @param num Number of which to return the triangle (Gauss sum).
  * @return Triangle (Gauss sum) of \p num.
  */
-uint_fast64_t triangle(uint_fast64_t num)
+uint_fast64_t triangleR(uint_fast64_t num)
 {
     switch (num) {
     case 0: return 0;
-    default: return num + triangle(num - 1);
+    default: return num + triangleR(num - 1);
     }
 }
 
 /** Performance function pointer table. */
 struct entry functions[] = {
-    defFunc(fibo),
-    defFunc(fac),
-    defFunc(triangle),
+    defFunc(fiboR),
+    defFunc(facR),
+    defFunc(triangleR),
 };
 
 /** Number of entries in #functions. */
@@ -130,14 +130,14 @@ uint_fast64_t parseLong(const char *nptr)
  * @param argv Command line arguments.
  * @return 0 in case of success, any other value indicates an error.
  */
-int main(int argc, const char *argv[])
+int main(const int argc, const char *argv[])
 {
     prgname = argv[0];
 
     if (argc == 3) {
-        uint_fast64_t num = parseLong(argv[2]);
+        const uint_fast64_t num = parseLong(argv[2]);
         size_t index;
-        const char *funcName = argv[1];
+        const char *const funcName = argv[1];
         for (index = 0; index < NUM_FUNCTIONS; index++) {
             if (0 == strcmp(functions[index].name, funcName)) {
                 break;

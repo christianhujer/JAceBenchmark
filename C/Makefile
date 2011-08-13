@@ -1,5 +1,7 @@
 include ../common.mak
 
+CFLAGS?=-std=c99 -W -Wall -pedantic
+
 OBJECTS:=$(patsubst %.c, %.o, $(wildcard *.c))
 
 .PHONY: all
